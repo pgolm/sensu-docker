@@ -1,0 +1,10 @@
+FROM pgolm/sensu:latest
+
+ARG PLUGINS="cpu-checks,disk-checks,load-checks,memory-checks"
+ENV SENSU_PLUGINS=${PLUGINS}
+
+RUN \
+    apt-get update &&\
+    apt-get install -y libxml2 libxml2-dev libxslt1-dev zlib1g-dev build-essential &&\
+    sensu-install -P $SENSU_PLUGINS &&\
+    apt-get remove -y libxml2 libxml2-dev libxslt1-dev zlib1g-dev build-essential
