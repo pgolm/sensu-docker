@@ -12,5 +12,3 @@ RUN \
     apt-get install -y sensu=${SENSU_VERSION}
 
 ENV PATH /opt/sensu/embedded/bin:$PATH
-
-EXPOSE 4567
