@@ -1,6 +1,6 @@
 FROM pgolm/sensu:latest
 
-ARG PLUGINS="cpu-checks,disk-checks,load-checks,memory-checks"
+ARG PLUGINS
 ENV SENSU_PLUGINS=${PLUGINS}
 
 RUN \
