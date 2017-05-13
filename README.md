@@ -1,12 +1,7 @@
 # Sensu
 
-This git repo provides a docker image wit sensu.
+[![pgolm/sensu](http://dockeri.co/image/pgolm/sensu)](https://registry.hub.docker.com/u/pgolm/sensu/)
 
-This image installs the official package into a basic ubuntu image.
+[![Build Status](https://travis-ci.org/pgolm/sensu-docker.svg?branch=master)](https://travis-ci.org/pgolm/sensu-docker)
 
-## Build client with plugins
-
-You could use the `Dockerfile.plugins` to build a custom client image with plugins preinstalled.
-```
-docker build -t sensu-client -f Dockerfile.plugins --build-arg PLUGINS=cpu-checks,load-checks .
-```
+A [sensu](https://sensuapp.org/) docker image, made with love.
