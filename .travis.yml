@@ -4,17 +4,18 @@ services: docker
 env:
   - VERSION=0.29
 
-install:
-  - git clone https://github.com/docker-library/official-images.git ~/official-images
-
 before_script:
   - env | sort
   - cd "$VERSION"
   - image="pgolm/sensu:${VERSION}"
 
-script:
-  - travis_retry docker build -t "$image" .
-  - ~/official-images/test/run.sh "$image"
+jobs:
+  include:
+    - stage: Build Docker image
+      script: travis_retry docker build -t "$image" .
+    - stage: Test image
+      script: git clone https://github.com/docker-library/official-images.git ~/official-images
+    - script: ~/official-images/test/run.sh "$image"
 
 after_script:
   - docker images
